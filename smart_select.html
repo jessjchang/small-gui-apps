@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Cars for Sale</title>
+    <link rel="stylesheet" href="whitespace-reset.css">
+    <link rel="stylesheet" href="smart_select.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js"></script>
+    <script src="smart_select.js"></script>
+  </head>
+  <body>
+    <header>
+      <h1>Buy Used Cars</h1>
+      <div id="filters"></div>
+    </header>
+    <main>
+      <div id="cars"></div>
+    </main>
+
+    <script id="filters_template" type="text/x-handlebars-template">
+      <label for="make_select">Make</label>
+      <select name="make" id="make_select">
+        {{> make_options_template}}
+      </select>
+
+      <label for="model_select">Model</label>
+      <select name="model" id="model_select">
+        {{> model_options_template}}
+      </select>
+
+      <label for="price_select">Price</label>
+      <select name="price" id="price_select">
+        {{> price_options_template}}
+      </select>
+
+      <label for="year_select">Year</label>
+      <select name="year" id="year_select">
+        {{> year_options_template}}
+      </select>
+
+      <button class="filter_btn">Filter</button>
+    </script>
+
+    <script id="cars_template" type="text/x-handlebars-template">
+      {{#each cars}}
+        {{> car_template}}
+      {{/each}}
+    </script>
+
+    <script id="car_template" type="text/x-handlebars-template" data-type="partial">
+      <div class="car">
+        <figure>
+          <img src="{{image}}">
+        </figure>
+        <h2>{{make}} {{model}}</h2>
+        <p class="year">Year: {{year}}</p>
+        <p class="price">Price: ${{price}}</p>
+        <a href="#">Buy</a>
+      </div>
+    </script>
+
+    <script id="make_options_template" type="text/x-handlebars-template" data-type="partial">
+      <option value="">All</option>
+      {{#each makes}}
+        <option value="{{this}}">{{this}}</option>
+      {{/each}}
+    </script>
+
+    <script id="model_options_template" type="text/x-handlebars-template" data-type="partial">
+      <option value="">All</option>
+      {{#each models}}
+        <option value="{{this}}">{{this}}</option>
+      {{/each}}
+    </script>
+
+    <script id="price_options_template" type="text/x-handlebars-template" data-type="partial">
+      <option value="">All</option>
+      {{#each prices}}
+        <option value="{{this}}">{{this}}</option>
+      {{/each}}
+    </script>
+
+    <script id="year_options_template" type="text/x-handlebars-template" data-type="partial">
+      <option value="">All</option>
+      {{#each years}}
+        <option value="{{this}}">{{this}}</option>
+      {{/each}}
+    </script>
+  </body>
+</html>

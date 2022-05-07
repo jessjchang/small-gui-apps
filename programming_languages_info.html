@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Programming Languages Info</title>
+    <link rel="stylesheet" href="programming_languages_info.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.js"></script>
+    <script src="programming_languages_info.js"></script>
+  </head>
+  <body>
+    <h1>Programming Languages</h1>
+    <div id="languages"></div>
+
+    <script id="language_template" type="text/x-handlebars-template">
+      <div class="language" data-language="{{name}}">
+        <h2>{{name}}</h2>
+        <p>{{shortDescription}}</p>
+        {{#unless alreadyShort}}
+        <a href="#" class="more">Show More</a>
+        {{/unless}}
+      </div>
+    </script>
+  </body>
+</html>
